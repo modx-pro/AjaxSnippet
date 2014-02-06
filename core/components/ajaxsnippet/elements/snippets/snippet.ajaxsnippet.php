@@ -19,7 +19,7 @@ $modx->regClientScript(
 	'<script type="text/javascript">
 		$(document).ready(function() {
 			$.post("", {as_action: "'.$key.'"}, function(response) {
-			if (response.output) {
+			if (typeof response.output !== "undefined") {
 				$("#'.$key.'").html(response.output);
 				$(document).trigger("as_complete", response);
 			}

@@ -1,5 +1,9 @@
 Changelog for AjaxSnippet.
 
+1.1.0-pl
+==============
+- [#1] Fixed empty response from snippet.
+
 1.0.1-pl
 ==============
 - Added plugin for quicker response.
