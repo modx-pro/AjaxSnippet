@@ -14,7 +14,24 @@ $tmp = array(
 	'wrapper' => array(
 		'type' => 'textfield',
 		'value' => '',
-	)
+	),
+	'as_mode' => array(
+		'type' => 'list',
+		'options' => array(
+			array('text' => 'OnLoad','value' => 'onload'),
+			array('text' => 'OnClick','value' => 'onclick'),
+			array('text' => 'None','value' => 'none'),
+		),
+		'value' => 'onload'
+	),
+	'as_trigger' => array(
+		'type' => 'textfield',
+		'value' => '',
+	),
+	'as_target' => array(
+		'type' => 'textfield',
+		'value' => '',
+	),
 );
 
 foreach ($tmp as $k => $v) {
