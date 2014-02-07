@@ -16,7 +16,7 @@ if (empty($as_mode)) {$as_mode = 'OnLoad';}
 if (empty($as_target)) {$as_target = '#'.$key;}
 
 $script = '
-$.post("", {as_action: "'.$key.'"}, function(response) {
+$.post("'.$modx->context->makeUrl($modx->resource->id, '', 'full').'", {as_action: "'.$key.'"}, function(response) {
 	if (typeof response.output !== "undefined") {
 		$("'.$as_target.'").html(response.output);
 		spinner.remove();
@@ -53,6 +53,7 @@ switch (strtolower($as_mode)) {
 				spinner.css("display","block");
 				$(this).remove();
 				'.$script.'
+				return false;
 			});
 		</script>'), true);
 		$cache->set($cache_key . $key, $scriptProperties);

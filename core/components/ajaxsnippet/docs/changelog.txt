@@ -1,11 +1,12 @@
 Changelog for AjaxSnippet.
 
-1.1.0-pl
+1.1.0-pl1
 ==============
 - [#1] Fixed empty response from snippet.
 - Run processing of elements only when it needed.
 - Added ability to run snippet by clicking on special trigger link.
 - New parameter in snippet: "mode", "trigger" and "target".
+- Fixed url for ajax requests.
 
 1.0.1-pl
 ==============
