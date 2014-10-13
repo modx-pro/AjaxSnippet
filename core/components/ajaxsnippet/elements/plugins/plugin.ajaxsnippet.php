@@ -3,10 +3,12 @@
 switch ($modx->event->name) {
 
 	case 'OnLoadWebDocument':
-		if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {return;}
+		if (empty($_SERVER['HTTP_X_REQUESTED_WITH']) || $_SERVER['HTTP_X_REQUESTED_WITH'] != 'XMLHttpRequest') {
+			return;
+		}
 		/** @var xPDOFileCache $cache */
-		$cache = $modx->cacheManager->getCacheProvider($modx->getOption('cache_resource_key', null, 'resource'));
-		$cache_key = $modx->resource->getCacheKey() . '/as/';
+		$cache = $modx->cacheManager;
+		$cache_key = '/ajaxsnippet/';
 
 		if (!empty($_REQUEST['as_action']) && $scriptProperties = $cache->get($cache_key . $_REQUEST['as_action'])) {
 			$output = '';
@@ -20,7 +22,7 @@ switch ($modx->event->name) {
 
 				$output = $object->process($scriptProperties);
 				if (strpos($output, '[[') !== false) {
-					$maxIterations= intval($modx->getOption('parser_max_iterations', $options, 10));
+					$maxIterations = intval($modx->getOption('parser_max_iterations', $options, 10));
 					$modx->parser->processElementTags('', $output, true, false, '[[', ']]', array(), $maxIterations);
 					$modx->parser->processElementTags('', $output, true, true, '[[', ']]', array(), $maxIterations);
 				}
