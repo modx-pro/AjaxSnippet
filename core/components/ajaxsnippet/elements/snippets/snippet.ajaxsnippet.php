@@ -15,9 +15,10 @@ $spinner = 'data:image/gif;base64,R0lGODlhQABAAKUAAAQCBISChMTCxERCRKSipOTi5GRiZC
 if (!empty($wrapper)) {$wrapper = $modx->getChunk($wrapper);}
 if (empty($as_mode)) {$as_mode = 'OnLoad';}
 if (empty($as_target)) {$as_target = '#'.$key;}
+if (empty($scheme)) {$scheme = 'full';}
 
 $script = '
-$.post("'.$modx->context->makeUrl($modx->resource->id, '', 'full').'", {as_action: "'.$key.'"}, function(response) {
+$.post("'.$modx->context->makeUrl($modx->resource->id, '', $scheme).'", {as_action: "'.$key.'"}, function(response) {
 	if (typeof response.output !== "undefined") {
 		$("'.$as_target.'").html(response.output);
 		spinner.remove();
